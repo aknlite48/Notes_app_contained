@@ -101,7 +101,7 @@ const App = (props) => {
       password: password,
     }
     try {
-      axios.post(login_url,req_body)
+      await axios.post(login_url,req_body)
       setIsSignUp(false)
       set_username("")
       set_password("")
@@ -292,6 +292,7 @@ const App = (props) => {
               <button type="submit" className="cre_acc-button">Create Account</button>
               
             </form>
+            <button className="log-back-button" onClick={() => { setIsSignUp(false); }}>Back</button>
             </div>
           </div>
           

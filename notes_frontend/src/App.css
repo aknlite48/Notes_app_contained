@@ -127,6 +127,40 @@ h2 {
   transform: scale(1.05);
 }
 
+.cre_acc-button {
+  position: relative;
+  margin-top: 5px;
+  padding: 10px;
+  background-color: green;
+  color: #fff;
+  border: none;
+  border-radius: 25px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.cre_acc-button:hover {
+  background-color: rgb(53, 224, 53);
+  transform: sclog-back-button
+}
+.log-back-button {
+  position: relative;
+  margin-top: 5px;
+  padding: 10px;
+  background-color: black;
+  color: #fff;
+  border: none;
+  border-radius: 25px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.log-back-button:hover {
+  background-color: rgb(53, 224, 53);
+  transform: scale(1.05);
+}
 
  /*---- notes design ----*/
 
