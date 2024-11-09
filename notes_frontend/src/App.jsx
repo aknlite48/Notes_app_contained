@@ -15,6 +15,7 @@ const App = (props) => {
   const [username,set_username] = useState('')
   const [password,set_password] = useState('')
   const [user,set_user] = useState(null)
+  const [isAdding,setIsAdding] = useState(false)
 
   /*
   const hook = () => {
@@ -202,7 +203,7 @@ const App = (props) => {
 
     return (
       <div className="notes-wrapper">
-      <div className="notes-container">
+      {!isAdding && (<div className="notes-container">
       {rf2.map(note => (
           <div key={note.id} className="note-card">
                     <div className="note-buttons">
@@ -215,8 +216,20 @@ const App = (props) => {
               </div>
           </div>
       ))}
-  </div>
-  <button className="add-button" onClick={()=>{}}>+</button>
+  </div>)}
+                  {isAdding && (
+                    <div className="new-note-input">
+                        <textarea
+                            value={newnote}
+                            onChange={(e) => setNewNote(e.target.value)}
+                            placeholder="Enter your new note here..."
+                            className="new-note-textarea"
+                        />
+                        <button className="save-new-note-button" onClick={addNote}>Save</button>
+                        <button className="cancel-new-note-button" onClick={() => setIsAdding(false)}>Cancel</button>
+                    </div>
+                )}
+  {!isAdding && <button className="add-button" onClick={()=>{setIsAdding(true)}}>+</button>}
   </div>
     );
   }
@@ -271,8 +284,6 @@ const App = (props) => {
       {(user) ? To_rend() : null}
       
 
-
-      {(user) ? Add_portal() : null}
 
 
     </div>

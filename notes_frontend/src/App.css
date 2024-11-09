@@ -223,3 +223,65 @@ form {
   color: #1890ff;
   font-weight: bold;
 }
+
+.new-note-input {
+  margin-top: 15px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 15px;
+  max-width: 400px;
+  background: #fff;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  animation: fadeIn 0.3s ease-in;
+}
+
+.new-note-textarea {
+  width: 95%;
+  min-height: 80px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  padding: 10px;
+  font-size: 14px;
+  outline: none;
+}
+
+.new-note-textarea:focus {
+  border-color: #28a745;
+}
+
+.save-new-note-button,
+.cancel-new-note-button {
+  background-color: #28a745;
+  color: #fff;
+  border: none;
+  padding: 5px 10px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 14px;
+  transition: background-color 0.3s ease;
+}
+
+.save-new-note-button:hover {
+  background-color: #218838;
+}
+
+.cancel-new-note-button {
+  background-color: #dc3545;
+}
+
+.cancel-new-note-button:hover {
+  background-color: #c82333;
+}
+
+@keyframes fadeIn {
+  from {
+      opacity: 0;
+      transform: translateY(10px);
+  }
+  to {
+      opacity: 1;
+      transform: translateY(0);
+  }
+}
