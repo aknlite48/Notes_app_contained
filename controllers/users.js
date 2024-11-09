@@ -6,10 +6,16 @@ const User = require('../models/users')
 usersRouter.post('/',async (request,response)=>{
     const {username,name,password} = request.body
     if (!username || !name || !password) {
-        response.status(400).json({error: "missing fields"})
+        return response.status(400).json({error: "missing fields"})
     }
     const saltRounds = 10
-    const passwordHash = await bcrypt.hash(password,saltRounds)
+    let passwordHash
+    try {
+        passwordHash = await bcrypt.hash(password,saltRounds)
+    }
+    catch (error) {
+        return response.status(400).json({error : error.name})
+    }
 
     const new_user = new User({
         username : username,
