@@ -5,7 +5,7 @@ body {
   height: 100vh;
   margin: 0;
   font-family: 'Arial', sans-serif;
-  background: linear-gradient(135deg, brown, darkgoldenrod);
+  background: linear-gradient(135deg, #4A90E2, #357ABD);
   overflow: hidden;
 }
 
@@ -19,22 +19,21 @@ body {
 }
 
 .login-box {
-  background: rgba(255, 255, 255, 0.2);
-  backdrop-filter: blur(10px);
+  background: rgba(255, 255, 255, 0.9);
   border-radius: 15px;
   padding: 40px 30px;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
   width: 320px;
 }
 
 .login-box:hover {
   transform: translateY(-10px);
-  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
 }
 
 h2 {
-  color: #fff;
+  color: #357ABD;
   text-align: center;
   margin-bottom: 20px;
   animation: slideDown 0.7s ease-out;
@@ -46,6 +45,8 @@ form {
 }
 
 .input-group {
+  display: flex;
+  justify-content: center;
   position: relative;
   margin-bottom: 30px;
 }
@@ -55,22 +56,22 @@ form {
   padding: 10px 10px;
   background: transparent;
   border: none;
-  border-bottom: 2px solid #fff;
-  color: #fff;
+  border-bottom: 2px solid #357ABD;
+  color: black;
   font-size: 16px;
   outline: none;
   transition: border-bottom 0.3s ease;
 }
 
 .input-group input:focus {
-  border-bottom: 2px solid #e09;
+  border-bottom: 2px solid #4A90E2;
 }
 
 .input-group label {
   position: absolute;
   top: 10px;
   left: 10px;
-  color: #ddd;
+  color: #666;
   pointer-events: none;
   transition: 0.3s ease all;
 }
@@ -79,13 +80,13 @@ form {
 .input-group input:valid ~ label {
   top: -10px;
   left: 0;
-  color: #e09;
+  color: #4A90E2;
   font-size: 12px;
 }
 
 .login-button {
   padding: 10px;
-  background-color: #e09;
+  background-color: #4A90E2;
   color: #fff;
   border: none;
   border-radius: 25px;
@@ -95,7 +96,7 @@ form {
 }
 
 .login-button:hover {
-  background-color: #d0e;
+  background-color: #357ABD;
   transform: scale(1.05);
 }
 

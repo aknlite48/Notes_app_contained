@@ -34,4 +34,18 @@ usersRouter.get('/',(request,response)=>{
     })
 })
 
+usersRouter.get('/:user_id',async (request,response)=>{
+    const qu_id = request.params.user_id
+    try {
+        result = await User.find({_id:qu_id}).populate('notes',{ content: 1, important: 1 })
+        
+        return response.json(result)
+        
+    }
+    catch (error) {
+        return response.status(400).json(error)
+    }
+
+})
+
 module.exports = usersRouter
