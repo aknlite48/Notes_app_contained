@@ -1,3 +1,3 @@
-build: npm install && cd notes_frontend && npm install && cd ..
+build: npm run init
 
 deploy: npm run deploy && npm run start
