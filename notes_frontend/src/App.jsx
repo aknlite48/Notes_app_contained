@@ -159,11 +159,13 @@ const App = (props) => {
     
     let rf2 = isImp ? rf1.filter((n)=>{return n.important}) : rf1
     return (
-      
+      <div>
+      <button onClick={()=>{if (isImp) {setImp(false)} else {setImp(true)}}}>Show Imp</button>
+      <button id='jtop' onClick={()=>{if (to_sort===0) {set_sort(1)} if (to_sort===1) {set_sort(2)} if (to_sort===2) {set_sort(0)}}}>{sort_display[to_sort]}</button>
         <ul>
         {rf2.map((note)=> {return <li key={note.id}>{note.content} <button onClick={()=>{changeImp(note.id)}}>{note.important?'U':'I'}</button><button onClick={()=>{deleteNote(note.id)}}>X</button></li>})}
         </ul>
-      
+      </div>
     )
   }
   
@@ -173,13 +175,16 @@ const App = (props) => {
   const Login_portal = () => {
     if (!user) {
     return (
-      <div>
-        <form onSubmit={handleLogin}>
-          <p>Username: <input type="text" value={username} name="username" onChange={(event)=>{set_username(event.target.value)}}/></p>
-          <p>Password: <input type="password" value={password} name="password" onChange={(event)=>{set_password(event.target.value)}}/></p>
+      <div className="login-container">
+      <div class="login-box">
       
-          <button type="submit">Login</button>
+        <form onSubmit={handleLogin}>
+          <div className="input-group"> <label htmlFor="username"></label> <input type="text" value={username} name="username" placeholder="Username" onChange={(event)=>{set_username(event.target.value)}}/></div>
+          <div className="input-group"> <label htmlFor="password"></label> <input type="password" value={password} name="password" placeholder="Password" onChange={(event)=>{set_password(event.target.value)}}/></div>
+      
+          <button type="submit" className="login-button">Login</button>
         </form>
+      </div>
       </div>
     )
   }
@@ -209,16 +214,13 @@ const App = (props) => {
   return (
     <div>
       {Login_portal()}
-      <h1 id='jtop'>Notes</h1> 
-      <button onClick={()=>{if (isImp) {setImp(false)} else {setImp(true)}}}>Show Imp</button>
-      <button id='jtop' onClick={()=>{if (to_sort===0) {set_sort(1)} if (to_sort===1) {set_sort(2)} if (to_sort===2) {set_sort(0)}}}>{sort_display[to_sort]}</button>
 
 
-      <To_rend />
+      {(user) ? To_rend() : null}
+      
 
 
-
-      {Add_portal()}
+      {(user) ? Add_portal() : null}
 
 
     </div>
