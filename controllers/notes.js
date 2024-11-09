@@ -52,6 +52,34 @@ notesRouter.get('/',(request,response)=>{
     })
 })
 
+notesRouter.delete('/:id',async (request,response)=>{
+    let decode_token
+
+    try {
+        decode_token = jwt.verify(getTokenFrom(request),process.env.SECRET)
+    }
+    catch (error) {
+        return response.status(401).json({error : "invalid token"})
+    }
+
+    const user = await User.findById(decode_token.id)
+    const id = request.params.id
+    try {
+        //await Note.remove
+        await Note.deleteOne({_id:id})
+    }
+    catch (error) {
+        return response.status(401).json({error : "note not found"})
+    }
+
+    user.notes = user.notes.filter((n)=>{return n!==id})
+    await user.save()
+    response.status(201).json({"status":"delete successful"})
+    
+
+
+})
+
 
 
 module.exports = notesRouter

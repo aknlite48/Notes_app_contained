@@ -16,6 +16,9 @@ body {
   width: 100%;
   height: 100%;
   animation: fadeIn 1s ease-out;
+  max-height: 80vh; /* Added max-height for scroll */
+  overflow-y: auto; /* Allows vertical scrolling */
+  padding-right: 10px; /* Adds padding to avoid clipping with scrollbar */
 }
 
 .login-box {
@@ -100,24 +103,123 @@ form {
   transform: scale(1.05);
 }
 
-@keyframes fadeIn {
-  from {
-      opacity: 0;
-      transform: scale(0.95);
-  }
-  to {
-      opacity: 1;
-      transform: scale(1);
-  }
+ /*---- notes design ----*/
+
+.main_body {
+  display: flex;
+  width: 1500px;
+  justify-content: center;
 }
 
-@keyframes slideDown {
-  from {
-      transform: translateY(-50px);
-      opacity: 0;
-  }
-  to {
-      transform: translateY(0);
-      opacity: 1;
-  }
+.notes-wrapper {
+  position: relative;
+  width: 100%;
+  max-width: 1000px;
+}
+
+.add-button {
+  position: relative; /* Positioned relative to the viewport */
+  bottom: 60px; /* Distance from the bottom */
+  left: 325px; /* Distance from the right */
+  background-color: #28a745;
+  color: #fff;
+  border: none;
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  font-size: 24px;
+  cursor: pointer;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  transition: background-color 0.3s, transform 0.2s;
+}
+
+.add-button:hover {
+  background-color: #218838;
+  transform: scale(1.1);
+}
+
+.notes-container {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  width: 100%;
+  max-width: 400px; /* Ensures notes fit within the container */
+  max-height: 80vh; /* Keeps vertical scroll functionality */
+  overflow-y: auto;
+  overflow-x: hidden; /* Prevents horizontal scrolling */
+  padding-right: 10px; /* Space for scrollbar */
+  box-sizing: border-box;
+}
+
+.note-card {
+  background: #fff;
+  border-radius: 10px;
+  padding: 15px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s;
+  width: 100%;/*calc(100% - 20px); /* Ensures the card does not exceed container width */
+  margin: 0 auto; /* Centers the card */
+  box-sizing: border-box;
+}
+
+.note-card:hover {
+  transform: translateY(-3px);
+}
+
+.note-card:hover .note-buttons {
+  display: flex;
+}
+
+.note-buttons {
+  display: none; /* Hidden until hover */
+  position: absolute;
+  top: 10px;
+  right: 10px; /* Moved to the upper right */
+  gap: 5px;
+}
+
+.edit-button,
+.delete-button {
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  padding: 5px 10px;
+  cursor: pointer;
+  font-size: 12px;
+  transition: background-color 0.3s ease;
+}
+
+.edit-button:hover {
+  background-color: #0056b3;
+}
+
+.delete-button {
+  background-color: #dc3545;
+}
+
+.delete-button:hover {
+  background-color: #c82333;
+}
+
+.note-content {
+  color: #333;
+  font-size: 16px;
+  margin: 0;
+}
+
+.note-footer {
+  margin-top: 10px;
+  font-size: 12px;
+  color: #888;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.note-id {
+  background-color: #e6f7ff;
+  padding: 2px 6px;
+  border-radius: 4px;
+  color: #1890ff;
+  font-weight: bold;
 }
