@@ -16,7 +16,7 @@ body {
   width: 100%;
   height: 100%;
   animation: fadeIn 1s ease-out;
-  max-height: 80vh; /* Added max-height for scroll */
+  max-height: 120vh; /* Added max-height for scroll */
   overflow-y: auto; /* Allows vertical scrolling */
   padding-right: 10px; /* Adds padding to avoid clipping with scrollbar */
 }
@@ -42,7 +42,12 @@ h2 {
   animation: slideDown 0.7s ease-out;
 }
 
-form {
+.login-boxc {
+  display: flex;
+  flex-direction: column;
+}
+
+.login-boxc form {
   display: flex;
   flex-direction: column;
 }
@@ -103,6 +108,26 @@ form {
   transform: scale(1.05);
 }
 
+
+.signup-button {
+  position: relative;
+  margin-top: 5px;
+  padding: 10px;
+  background-color: red;
+  color: #fff;
+  border: none;
+  border-radius: 25px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.signup-button:hover {
+  background-color: lightcoral;
+  transform: scale(1.05);
+}
+
+
  /*---- notes design ----*/
 
 .main_body {
@@ -118,9 +143,9 @@ form {
 }
 
 .add-button {
-  position: relative; /* Positioned relative to the viewport */
-  bottom: 60px; /* Distance from the bottom */
-  left: 325px; /* Distance from the right */
+  position: absolute; /* Positioned relative to the viewport */
+  bottom: 10px; /* Distance from the bottom */
+  left: 625px; /* Distance from the right */
   background-color: #28a745;
   color: #fff;
   border: none;
@@ -136,6 +161,11 @@ form {
 .add-button:hover {
   background-color: #218838;
   transform: scale(1.1);
+}
+
+.notes-wrapper {
+  display: flex;
+  justify-content: center;
 }
 
 .notes-container {

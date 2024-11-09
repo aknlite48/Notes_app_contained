@@ -16,6 +16,7 @@ const App = (props) => {
   const [password,set_password] = useState('')
   const [user,set_user] = useState(null)
   const [isAdding,setIsAdding] = useState(false)
+  const [isSignUp,setIsSignUp] = useState(false)
 
   /*
   const hook = () => {
@@ -91,8 +92,29 @@ const App = (props) => {
     setNotes([])
   }
 
+  const handleSignup = async (event) => {
+    event.preventDefault()
+    const login_url = "/api/users"
+    const req_body = {
+      username: username,
+      name: "new sign up",
+      password: password,
+    }
+    try {
+      axios.post(login_url,req_body)
+      setIsSignUp(false)
+      set_username("")
+      set_password("")
+    }
+    catch (error) {
+      alert("sign up error")
+    }
+
+  }
+
   const addNote = (event)=>{
     event.preventDefault()
+    setIsAdding(false)
     const newnote1 = {
       id:(notes.length+1),
       content: newnote,
@@ -239,19 +261,44 @@ const App = (props) => {
 
   const Login_portal = () => {
     if (!user) {
-    return (
-      <div className="login-container">
-      <div class="login-box">
-      
-        <form onSubmit={handleLogin}>
-          <div className="input-group"> <label htmlFor="username"></label> <input type="text" value={username} name="username" placeholder="Username" onChange={(event)=>{set_username(event.target.value)}}/></div>
-          <div className="input-group"> <label htmlFor="password"></label> <input type="password" value={password} name="password" placeholder="Password" onChange={(event)=>{set_password(event.target.value)}}/></div>
-      
-          <button type="submit" className="login-button">Login</button>
-        </form>
-      </div>
-      </div>
-    )
+      if (!isSignUp) {
+        return (
+          <div className="login-container">
+          <div class="login-box">
+            <div class="login-boxc">
+          
+            <form onSubmit={handleLogin}>
+              <div className="input-group"> <label htmlFor="username"></label> <input type="text" value={username} name="username" placeholder="Username" onChange={(event)=>{set_username(event.target.value)}}/></div>
+              <div className="input-group"> <label htmlFor="password"></label> <input type="password" value={password} name="password" placeholder="Password" onChange={(event)=>{set_password(event.target.value)}}/></div>
+              <button type="submit" className="login-button">Login</button>
+              
+            </form>
+            <button className="signup-button" onClick={()=>{setIsSignUp(true)}}>Sign up</button>
+            </div>
+          </div>
+          
+          </div>
+        )
+      }
+      else {
+        return (
+          <div className="login-container">
+          <div class="login-box">
+            <div class="login-boxc">
+          
+            <form onSubmit={handleSignup}>
+              <div className="input-group"> <label htmlFor="username"></label> <input type="text" value={username} name="username" placeholder="Username" onChange={(event)=>{set_username(event.target.value)}}/></div>
+              <div className="input-group"> <label htmlFor="password"></label> <input type="password" value={password} name="password" placeholder="Password" onChange={(event)=>{set_password(event.target.value)}}/></div>
+              <button type="submit" className="cre_acc-button">Create Account</button>
+              
+            </form>
+            </div>
+          </div>
+          
+          </div>
+        )
+      }
+
   }
   else {
     return (
@@ -283,6 +330,8 @@ const App = (props) => {
 
       {(user) ? To_rend() : null}
       
+
+
 
 
 
